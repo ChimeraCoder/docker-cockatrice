@@ -19,17 +19,14 @@ RUN	cmake . #-DCMAKE_CXX_COMPILER=/usr/bin/c++
 RUN	make
 RUN	make install
 
-RUN useradd planeswalker
-RUN yes "asdf" | passwd planeswalker  # Set password to "asfd" for ssh login
-USER planeswalker
 
 # X11Forwarding is enabled by default
 RUN apt-get install -y -o Acquire::ForceIPv4=true openssh-server
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN /etc/init.d/ssh restart
+RUN sed -i 's/PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config
+RUN mkdir /var/run/sshd
 
+RUN useradd -m planeswalker
+RUN yes "asdf" | passwd planeswalker  # Set password to "asfd" for ssh login
 
-
-
-CMD /usr/local/bin/cockatrice
+CMD /usr/sbin/sshd -D
