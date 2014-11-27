@@ -7,10 +7,6 @@ RUN apt-get install -y bash
 RUN apt-get install -y wget
 RUN apt-get install -y -o Acquire::ForceIPv4=true procps
 RUN echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf && /sbin/sysctl -p
-#RUN echo "deb http://http.debian.net/debian jessie main" >> /etc/apt/sources.list
-#RUN apt-get install -t jessie -y libc6 libprotobuf-dev libqt4-network libqtmultimediakit1 libstdc++6
-#RUN apt-get install -t jessie -y git libqt4-svg 
-#RUN apt-get install -t jessie -y -o Acquire::ForceIPv4=true libgcrypt-dev cmake binutils cdecl g++
 RUN apt-get install -y -o Acquire::ForceIPv4=true qt-sdk build-essential qt4-dev-tools qtmobility-dev libprotobuf-dev protobuf-compiler libqtmultimediakit1 cmake git 
 
 #RUN wget http://packages.bodhilinux.com/bodhi/pool/main/c/cockatrice/cockatrice_20140625-1_amd64.deb
