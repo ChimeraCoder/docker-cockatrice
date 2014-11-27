@@ -11,6 +11,7 @@ RUN apt-get install -y -o Acquire::ForceIPv4=true qt-sdk build-essential qt4-dev
 
 RUN git clone https://github.com/Cockatrice/Cockatrice.git 
 WORKDIR Cockatrice
+RUN git checkout db0a77989b752171a1288ab1c61a7fc5b2de969e
 RUN	cmake . #-DCMAKE_CXX_COMPILER=/usr/bin/c++
 RUN	make
 RUN	make install
