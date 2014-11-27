@@ -11,8 +11,8 @@ RUN apt-get install -y -o Acquire::ForceIPv4=true qt-sdk build-essential qt4-dev
 
 RUN git clone https://github.com/Cockatrice/Cockatrice.git 
 WORKDIR Cockatrice
-RUN git checkout db0a77989b752171a1288ab1c61a7fc5b2de969e
-RUN	cmake . #-DCMAKE_CXX_COMPILER=/usr/bin/c++
+RUN git checkout 9e1f8a0892d1ae1ff207c80008b4d3dece72c2a7
+RUN	cmake . 
 RUN	make
 RUN	make install
 
@@ -26,4 +26,10 @@ RUN mkdir /var/run/sshd
 RUN useradd -m planeswalker
 RUN yes "asdf" | passwd planeswalker  # Set password to "asfd" for ssh login
 
-CMD /usr/sbin/sshd -D
+ADD run.sh /home/planeswalker/run.sh
+RUN chmod 755 /home/planeswalker/run.sh
+RUN mkdir -p /home/planeswalker/.local/share/data/Cockatrice
+RUN chown -R planeswalker:planeswalker /home/planeswalker/
+
+
+CMD /home/planeswalker/run.sh
