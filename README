@@ -1,0 +1,10 @@
+
+
+
+SSH into the container as user `planeswalker`, with X forwarding enabled
+
+````sh
+$ DOCKER_IP=$(docker inspect <container--id> | grep IPAddress | cut -d '"' -f 4) ssh -XC planeswalker@$DOCKER_IP cockatrice
+
+````
+
