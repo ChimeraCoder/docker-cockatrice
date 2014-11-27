@@ -8,3 +8,6 @@ $ DOCKER_IP=$(docker inspect <container--id> | grep IPAddress | cut -d '"' -f 4)
 
 ````
 
+
+Cockatrice is compiled from scratch, as the .deb file currently points to broken dependencies on testing.
+

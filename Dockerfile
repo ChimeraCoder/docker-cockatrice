@@ -9,10 +9,6 @@ RUN apt-get install -y -o Acquire::ForceIPv4=true procps
 RUN echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf && /sbin/sysctl -p
 RUN apt-get install -y -o Acquire::ForceIPv4=true qt-sdk build-essential qt4-dev-tools qtmobility-dev libprotobuf-dev protobuf-compiler libqtmultimediakit1 cmake git 
 
-#RUN wget http://packages.bodhilinux.com/bodhi/pool/main/c/cockatrice/cockatrice_20140625-1_amd64.deb
-#RUN gdebi -o APT::Install-Recommends=0 -o APT::Install-Suggests=0 cockatrice_20140625-1_amd64.deb
-#RUN dpkg --install --ignore-depends=libprotobuf8 cockatrice_20140625-1_amd64.deb
-
 RUN git clone https://github.com/Cockatrice/Cockatrice.git 
 WORKDIR Cockatrice
 RUN	cmake . #-DCMAKE_CXX_COMPILER=/usr/bin/c++
