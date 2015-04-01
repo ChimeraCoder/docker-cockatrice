@@ -31,8 +31,5 @@ RUN chmod 755 /home/planeswalker/run.sh
 RUN mkdir -p /home/planeswalker/.local/share/data/Cockatrice
 RUN chown -R planeswalker:planeswalker /home/planeswalker/
 
-#TODO start sshd
 
-ENV QT_X11_NO_MITSHM 1
-
-CMD /usr/local/bin/cockatrice
+CMD /home/planeswalker/run.sh

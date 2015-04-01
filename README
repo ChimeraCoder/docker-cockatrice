@@ -1,6 +1,5 @@
-# Cockatrice
 
-This provides a Docker container for running [Cockatrice](https://github.com/Cockatrice/Cockatrice). Cockatrice is 'an open-source multiplatform software for playing card games, such as Magic: The Gathering, over a network'.
+
 
 ````sh
 $ docker run --rm -t --name cockatrice -v ~/.local/share/data/Cockatrice:/home/planeswalker/.local/share/data/Cockatrice <image-id>
@@ -15,13 +14,4 @@ $ DOCKER_IP=$(docker inspect cockatrice | grep IPAddress | cut -d '"' -f 4); ssh
 
 
 Cockatrice is compiled from scratch, as the .deb file currently points to broken dependencies on testing.
-
-
-#### Cards
-
-Cockatrice does not come with card files (`cards.xml`) included. If the data directory does not already have a `cards.xml`, it will attempt to download one from the URL provided in the `$CARDS_URL` environment variable (if defined). This varible is optional if the card files are already present.
-
-
-
-Cards.xml: https://www.dropbox.com/s/mk6vyr10b1x0l8y/cards.xml?dl=1
 
